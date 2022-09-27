@@ -73,7 +73,8 @@ finally
     connection.Close();
 }
 
-// TEST Livraison + DetailLivraison
+#region TEST
+
 Livraison livraison1 = new Livraison(1, DateTime.Now);
 livraison1.ajouterDetailLivraison(new DetailLivraison(1, 1, 3));
 try
@@ -86,12 +87,15 @@ catch (Exception e)
 }
 livraison1.modifierDetailLivraison(new DetailLivraison(1, 1, 5));
 try {
-livraison1.modifierDetailLivraison(new DetailLivraison(1, 2, 3));
+    livraison1.modifierDetailLivraison(new DetailLivraison(1, 2, 3));
 }
 catch (Exception e)
 {
     Console.Out.WriteLine(e.Message);
 }
+
+#endregion TEST
+
 
 
 // TEST LivraisonDAO insert and selectALL
