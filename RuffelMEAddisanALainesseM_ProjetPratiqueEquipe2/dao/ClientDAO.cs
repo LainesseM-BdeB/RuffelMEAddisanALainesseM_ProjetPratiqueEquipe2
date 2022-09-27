@@ -48,15 +48,15 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 		public void GetAllOrder()
 		{
-			OracleConnection connection = DBConnection.GetInstance();
-			OracleCommand query = connection.CreateCommand();
-			query.CommandText = "SELECT cli.noClient, cli.nomClient, cmd.noCommande FROM commande cmd " +
-			                    "INNER JOIN client cli ON cmd.noClient = cli.noClient";
+			
+			OracleCommand cmd = connection.CreateCommand();
+			cmd.CommandText = "SELECT cli.noClient, cli.nomClient, COUNT(["cmd.noCommande"]) FROM commande cmd " +
+			                  "INNER JOIN client cli ON cmd.noClient = cli.noClient";
 			OracleDataReader response = null;
 			try
 			{
 				connection.Open();
-				response = query.ExecuteReader();
+				response = cmd.ExecuteReader();
 				while (response.Read())
 				{
 					Console.Out.WriteLine("#######################");
