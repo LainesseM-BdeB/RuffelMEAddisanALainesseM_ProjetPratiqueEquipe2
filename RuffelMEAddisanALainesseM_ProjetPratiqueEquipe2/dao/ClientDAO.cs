@@ -42,7 +42,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		{
 			OracleCommand cmd = new OracleCommand();
 			cmd.Connection = connection;
-			cmd.CommandText = "DELETE FROM Client WHERE NOCLIENT = :NOCLIENT";
+			cmd.CommandText = "DELETE FROM VENTE.CLIENT WHERE NOCLIENT = :NOCLIENT";
 			cmd.Parameters.Add(new OracleParameter("NOCLIENT", noClient));
 			try
 			{
