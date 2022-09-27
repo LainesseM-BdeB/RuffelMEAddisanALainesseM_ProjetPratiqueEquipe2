@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Oracle.ManagedDataAccess.Client;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
 
@@ -98,3 +99,9 @@ LivraisonDAO livraisonDao = new LivraisonDAO();
 livraisonDao.GetLivraisonAll();
 livraisonDao.InsertLivraison(new Livraison(99999, DateTime.Now));
 livraisonDao.GetLivraisonAll();
+
+// TEST ClientDAO
+ClientDAO clientDao = new ClientDAO();
+clientDao.GetAllClient();
+clientDao.GetAllOrder();
+
