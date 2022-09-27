@@ -31,5 +31,26 @@ public class LigneCommandeDAO
 		}
 	}
 	
-	
+	// A FINIR	
+	public void DeleteLivraisonById(int noLivraison)
+	{
+		OracleCommand cmd = new OracleCommand();
+		cmd.Connection = connection;
+		cmd.CommandText = "DELETE FROM Livraison WHERE NOLIVRAISON = :NOLIVRAISON";
+		cmd.Parameters.Add(new OracleParameter("NOLIVRAISON", noLivraison));
+		try
+		{
+			connection.Open();
+			cmd.ExecuteNonQuery();
+
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+		finally
+		{
+			connection.Close();
+		}
+	}
 }
