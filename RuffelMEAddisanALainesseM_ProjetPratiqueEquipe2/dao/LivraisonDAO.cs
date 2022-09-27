@@ -3,7 +3,7 @@ using Oracle.ManagedDataAccess.Client;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 public class LivraisonDAO
 {
-	OracleConnection connection = DBConnection.GetInstance();
+	private OracleConnection connection = DBConnection.GetInstance();
 	public LivraisonDAO()
 	{
 	}
@@ -32,7 +32,7 @@ public class LivraisonDAO
 		}
 	}
 
-	public void DeleteLivraison(int noLivraison)
+	public void DeleteLivraisonById(int noLivraison)
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
