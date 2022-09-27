@@ -1,5 +1,6 @@
 ﻿using System;
 using Oracle.ManagedDataAccess.Client;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 public class ArticleDAO	
 {
 	private OracleConnection connection = DBConnection.GetInstance();
@@ -13,8 +14,8 @@ public class ArticleDAO
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
 		cmd.CommandText = "INSERT INTO VENTE.ARTICLE VALUES (:NOARTICLE, :DESCRIPTION, :PRIXUNITAIRE, :QUANITEENSTOCK)";
-		cmd.Parameters.Add(new OracleParameter("NOARTICLE", ligneCommande.NoArticle));
-		cmd.Parameters.Add(new OracleParameter("DESCRIPTION", livraison.Description));
+		cmd.Parameters.Add(new OracleParameter("NOARTICLE", article.NoArticle));
+		cmd.Parameters.Add(new OracleParameter("DESCRIPTION", article.Description));
 		cmd.Parameters.Add(new OracleParameter("PRIXUNITAIRE", article.PrixUnitaire));
 		cmd.Parameters.Add(new OracleParameter("QUANITEENSTOCK", article.QuantiteEnStock));
 		try
