@@ -14,8 +14,8 @@ public class LigneCommandeDAO
 		cmd.Connection = connection;
 		cmd.CommandText = "INSERT INTO VENTE.LIGNECOMMANDE VALUES (:NOCOMMANDE, :NOARTICLE, :QUANTITE")";
 		cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", ligneCommande.NoCommande));
-		cmd.Parameters.Add(new OracleParameter("NOARTICLE", livraison.NoArticle));
-		cmd.Parameters.Add(new OracleParameter("QUANTITE", livraison.Quantite));
+		cmd.Parameters.Add(new OracleParameter("NOARTICLE", ligneCommande.NoArticle));
+		cmd.Parameters.Add(new OracleParameter("QUANTITE", ligneCommande.Quantite));
 		try
 		{
 			connection.Open();
