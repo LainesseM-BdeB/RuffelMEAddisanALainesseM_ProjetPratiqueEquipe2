@@ -18,14 +18,14 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 		public void GetAllClient()
 		{
-			OracleCommand cmd = connection.CreateCommand;
+			OracleCommand cmd = connection.CreateCommand();
 			cmd.Connection = connection;
 			cmd.CommandText = "SELECT noClient,nomClient,noTelephone FROM Client"
 			OracleDataReader rd;
 			try
 			{
 				connection.Open();
-				response = query.ExecuteReader();
+				OracleDataReader response = query.ExecuteReader();
 				while (response.Read())
 				{
 					Console.Out.WriteLine("#######################");
