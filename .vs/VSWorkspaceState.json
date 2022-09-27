@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2",
+    "\\RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2\\dao",
+    "\\RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2\\model"
   ],
-  "SelectedNode": "\\C:\\Users\\addis\\Source\\Repos\\RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2",
+  "SelectedNode": "\\RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2\\dao\\ClientDAO.cs",
   "PreviewInSolutionExplorer": false
 }

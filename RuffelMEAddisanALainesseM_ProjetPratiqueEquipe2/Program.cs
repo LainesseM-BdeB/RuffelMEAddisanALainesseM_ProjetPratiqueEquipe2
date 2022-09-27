@@ -1,9 +1,9 @@
 ﻿using System.Numerics;
 using Oracle.ManagedDataAccess.Client;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao;
 
 
-// TEST Client + Commande + Article
 Client client1 = new Client(1, "Maxime", "555-5555");
 Client client2 = new Client(3, "John", "555-5555");
 Client client3 = new Client(2, "Bob", "555-5555");
@@ -49,7 +49,6 @@ foreach (var (key, value) in commande1.LigneCommandes)
     Console.Out.WriteLine("Qté: " + value.Quantite);
 }
 
-// TEST Connection à la DB et recherche de données
 OracleConnection connection = DBConnection.GetInstance();
 OracleCommand query = new OracleCommand("SELECT * FROM client");
 query.Connection = connection;
@@ -57,37 +56,19 @@ OracleDataReader response = null;
 try
 {
     connection.Open();
-    response = query.ExecuteReader();
-    while (response.Read())
-    {
-        Console.Out.WriteLine(response["nomclient"]);
-    }
+     response = query.ExecuteReader();
 }
 catch (Exception e)
 {
     Console.WriteLine(e.Message);
 }
-finally
+
+while (response.Read())
 {
-    connection.Close();
+    Console.Out.WriteLine(response["nomclient"]);
 }
 
-// TEST Livraison + DetailLivraison
-Livraison livraison1 = new Livraison(1, DateTime.Now);
-livraison1.ajouterDetailLivraison(new DetailLivraison(1, 1, 3));
-try
-{
-    livraison1.ajouterDetailLivraison(new DetailLivraison(1, 1, 5));
-}
-catch (Exception e)
-{
-    Console.Out.WriteLine(e.Message);
-}
-livraison1.modifierDetailLivraison(new DetailLivraison(1, 1, 5));
-try {
-livraison1.modifierDetailLivraison(new DetailLivraison(1, 2, 3));
-}
-catch (Exception e)
-{
-    Console.Out.WriteLine(e.Message);
-}
+ClientDAO clientDao = new ClientDAO();
+clientDao.GetAllClient("noClient","nomClient","noTelephone");
+clientDao.GetAllOrder();
+
