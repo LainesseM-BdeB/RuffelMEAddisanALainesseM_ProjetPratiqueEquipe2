@@ -7,6 +7,9 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 	public class ClientDAO
 	{
+		OracleConnection connection = DBConnection.GetInstance();
+		
+		
 		public ClientDAO()
 		{
 
@@ -15,10 +18,10 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 		public void GetAllClient()
 		{
-			OracleConnection connection = DBConnection.GetInstance();
-			OracleCommand query = new OracleCommand("SELECT * FROM client");
-			query.Connection = connection;
-			OracleDataReader response = null;
+			OracleCommand cmd = connection.CreateCommand;
+			cmd.Connection = connection;
+			cmd.CommandText = "SELECT noClient,nomClient,noTelephone FROM Client"
+			OracleDataReader rd;
 			try
 			{
 				connection.Open();
@@ -40,10 +43,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 			{
 				connection.Close();
 			}
-
-		
-
-
+			
 		}
 
 		public void GetAllOrder()
