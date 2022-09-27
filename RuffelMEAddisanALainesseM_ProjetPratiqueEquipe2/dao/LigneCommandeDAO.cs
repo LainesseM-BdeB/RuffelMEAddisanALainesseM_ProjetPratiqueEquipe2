@@ -33,12 +33,13 @@ public class LigneCommandeDAO
 	}
 	
 	// A FINIR	
-	public void DeleteLivraisonById(int noLivraison)
+	public void DeleteLigneCommandeById(int noCommande, int noArticle)
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "DELETE FROM Livraison WHERE NOLIVRAISON = :NOLIVRAISON";
-		cmd.Parameters.Add(new OracleParameter("NOLIVRAISON", noLivraison));
+		cmd.CommandText = "DELETE FROM VENTE.LIGNECOMMANDE WHERE NOCOMMANDE = :NOCOMMANDE AND NOARTICLE = :NOARTICLE";
+		cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", noCommande));
+		cmd.Parameters.Add(new OracleParameter("NOARTICLE", noArticle));
 		try
 		{
 			connection.Open();
