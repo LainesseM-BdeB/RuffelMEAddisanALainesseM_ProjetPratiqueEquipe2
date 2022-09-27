@@ -33,4 +33,6 @@ public class DetailLivraison
         get => quantiteLivree;
         set => quantiteLivree = value;
     }
+    
+    
 }
