@@ -2,5 +2,34 @@
 
 public class LigneCommande
 {
-    
+    private int noCommande;
+    private int noArticle;
+    private int quantite;
+
+    public LigneCommande(int noArticle, int quantite)
+    {
+        this.noArticle = noArticle;
+        this.quantite = quantite;
+    }
+
+    public LigneCommande(int noCommande, int noArticle, int quantite)
+    {
+        this.noCommande = noCommande;
+        this.noArticle = noArticle;
+        this.quantite = quantite;
+    }
+
+    public int NoCommande => noCommande;
+
+    public int NoArticle
+    {
+        get => noArticle;
+        set => noArticle = value;
+    }
+
+    public int Quantite
+    {
+        get => quantite;
+        set => quantite = value;
+    }
 }
