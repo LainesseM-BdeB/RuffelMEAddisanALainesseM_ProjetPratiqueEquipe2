@@ -32,7 +32,7 @@ public class LivraisonDAO
 		}
 	}
 
-	public void DeleteLivraison(int noLivraison)
+	public void DeleteLivraisonById(int noLivraison)
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
