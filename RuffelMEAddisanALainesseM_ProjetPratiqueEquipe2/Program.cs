@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Oracle.ManagedDataAccess.Client;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
 Client client1 = new Client(1, "Maxime", "555-5555");
@@ -45,3 +46,23 @@ foreach (var (key, value) in commande1.LigneCommandes)
     Console.Out.WriteLine("#Article: " + value.NoArticle);
     Console.Out.WriteLine("Qté: " + value.Quantite);
 }
+
+OracleConnection connection = DBConnection.GetInstance();
+OracleCommand query = new OracleCommand("SELECT * FROM client");
+query.Connection = connection;
+OracleDataReader response = null;
+try
+{
+    connection.Open();
+     response = query.ExecuteReader();
+}
+catch (Exception e)
+{
+    Console.WriteLine(e.Message);
+}
+
+while (response.Read())
+{
+    Console.Out.WriteLine(response["nomclient"]);
+}
+

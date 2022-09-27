@@ -1,4 +1,5 @@
 ﻿using System;
+using Oracle.ManagedDataAccess.Client;
 
 public sealed class DBConnection
 {
@@ -8,21 +9,20 @@ public sealed class DBConnection
 	private DBConnection()
 	{
 		string conParam = "DATA SOURCE=144.217.163.57:1521/XE; USER ID=vente; Password=anypw";
-		oracleConnection = new OracleConnection;
+		oracleConnection = new OracleConnection();
 		oracleConnection.ConnectionString = conParam;
 	}
 
-	public static DBConnection GetInstance()
+	public static OracleConnection GetInstance()
     {
 		if (oracleConnection == null)
         {
 			lock (cadenas)
             {
-				if (oracleConnection == null)
-                {
-					new DBConnection();
-                }
+	           new DBConnection();
             }
         }
+
+		return oracleConnection;
     }
 }
