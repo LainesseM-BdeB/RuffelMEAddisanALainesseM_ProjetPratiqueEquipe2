@@ -50,7 +50,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		{
 			
 			OracleCommand cmd = connection.CreateCommand();
-			cmd.CommandText = "SELECT cli.noClient, cli.nomClient, COUNT(["cmd.noCommande"]) FROM commande cmd " +
+			cmd.CommandText = "SELECT cli.noClient, cli.nomClient, COUNT([cmd.noCommande]) FROM commande cmd " +
 			                  "INNER JOIN client cli ON cmd.noClient = cli.noClient";
 			OracleDataReader response = null;
 			try

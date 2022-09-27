@@ -26,6 +26,7 @@ public class DetailLivraisonDAO
 		catch (Exception e)
 		{
 			Console.WriteLine(e.Message);
+			Console.WriteLine(e.StackTrace);
 		}
 		finally
 		{
@@ -34,18 +35,49 @@ public class DetailLivraisonDAO
 	}
 	
 	
-	// A FINIR
-	public void DeleteDetailLivraisonById(int noLivraison)
+	public void DeleteDetailLivraisonById(int noLivraison, int noCommande, int noArticle)
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "DELETE FROM Livraison WHERE NOLIVRAISON = :NOLIVRAISON";
-		cmd.Parameters.Add(new OracleParameter("NOLIVRAISON", noLivraison));
+		cmd.CommandText = "DELETE FROM livraison WHERE nolivraison = :nolivraison AND nocommande = :nocommande AND noarticle = :noarticle";
+		cmd.Parameters.Add(new OracleParameter("nolivraison", noLivraison));
+		cmd.Parameters.Add(new OracleParameter("nocommande", noCommande));
+		cmd.Parameters.Add(new OracleParameter("noarticle", noArticle));
 		try
 		{
 			connection.Open();
 			cmd.ExecuteNonQuery();
 
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+			Console.WriteLine(e.StackTrace);
+		}
+		finally
+		{
+			connection.Close();
+		}
+	}
+	
+	
+	public void GetDetailLivraisonAll()
+	{
+		OracleCommand cmd = new OracleCommand();
+		cmd.Connection = connection;
+		cmd.CommandText = "SELECT * FROM detaillivraison";
+		try
+		{
+			connection.Open();
+			OracleDataReader response = cmd.ExecuteReader();
+			while (response.Read())
+			{
+				Console.Out.WriteLine("#######################");
+				Console.Out.WriteLine(response["nolivraison"]);
+				Console.Out.WriteLine(response["nocommande"]);
+				Console.Out.WriteLine(response["noarticle"]);
+				Console.Out.WriteLine("#######################\n");
+			}
 		}
 		catch (Exception e)
 		{

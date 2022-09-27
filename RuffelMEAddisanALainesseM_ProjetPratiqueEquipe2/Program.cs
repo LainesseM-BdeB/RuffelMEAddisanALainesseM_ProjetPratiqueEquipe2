@@ -4,7 +4,7 @@ using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
 
-// TEST Client + Commande + Article
+/*// TEST Client + Commande + Article
 Client client1 = new Client(1, "Maxime", "555-5555");
 Client client2 = new Client(3, "John", "555-5555");
 Client client3 = new Client(2, "Bob", "555-5555");
@@ -112,5 +112,12 @@ livraisonDao.GetLivraisonAll();
 // TEST ClientDAO
 ClientDAO clientDao = new ClientDAO();
 clientDao.GetAllClient();
-clientDao.GetAllOrder();
+clientDao.GetAllOrder();*/
 
+ClientDAO clientDao = new ClientDAO();
+
+DetailLivraisonDAO detailLivraisonDao = new DetailLivraisonDAO();
+detailLivraisonDao.GetDetailLivraisonAll();
+detailLivraisonDao.InsertDetailLivraison(new DetailLivraison(999, 1, 70, 1));
+detailLivraisonDao.GetDetailLivraisonAll();
+detailLivraisonDao.DeleteDetailLivraisonById(999, 1, 70);
