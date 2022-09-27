@@ -15,7 +15,50 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 		}
 
+		public void InsertClient(Client client)
+		{
+			OracleCommand cmd = new OracleCommand();
+			cmd.Connection = connection;
+			cmd.CommandText = "INSERT INTO VENTE.CLIENT VALUES (:NOCLIENT, :NOMCLIENT, :NOTELEPHONE)";
+			cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", client.NoClient));
+			cmd.Parameters.Add(new OracleParameter("NOARTICLE", client.NomClient));
+			cmd.Parameters.Add(new OracleParameter("QUANTITE", client.NoTelephone));
+			try
+			{
+				connection.Open();
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+		}
+		
+		public void DeleteClientById(int noClient)
+		{
+			OracleCommand cmd = new OracleCommand();
+			cmd.Connection = connection;
+			cmd.CommandText = "DELETE FROM Client WHERE NOCLIENT = :NOCLIENT";
+			cmd.Parameters.Add(new OracleParameter("NOCLIENT", noClient));
+			try
+			{
+				connection.Open();
+				cmd.ExecuteNonQuery();
 
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			finally
+			{
+				connection.Close();
+			}
+		}
 		public void GetAllClient()
 		{
 			OracleCommand cmd = connection.CreateCommand();
