@@ -93,8 +93,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		{
 			
 			OracleCommand cmd = connection.CreateCommand();
-			cmd.CommandText = "SELECT cli.noClient, cli.nomClient, COUNT([cmd.noCommande]) FROM commande cmd " +
-			                  "INNER JOIN client cli ON cmd.noClient = cli.noClient";
+			cmd.CommandText = "SELECT cli.noclient, COUNT(cmd.noCommande) FROM commande cmd INNER JOIN client cli ON cmd.noClient = cli.noClient GROUP BY cli.noclient";
 			OracleDataReader response = null;
 			try
 			{
@@ -103,9 +102,8 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 				while (response.Read())
 				{
 					Console.Out.WriteLine("#######################");
-					Console.Out.WriteLine(response["noClient"]);
-					Console.Out.WriteLine(response["nomClient"]);
-					Console.Out.WriteLine(response["noCommande"]);
+					Console.Out.WriteLine(response[0]);
+					Console.Out.WriteLine(response[1]);
 					Console.Out.WriteLine("#######################\n");
 				}
 			}

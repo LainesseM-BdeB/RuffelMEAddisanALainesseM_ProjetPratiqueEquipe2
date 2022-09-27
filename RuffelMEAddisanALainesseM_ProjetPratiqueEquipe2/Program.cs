@@ -6,6 +6,9 @@ using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 #region Test ClientDAO
 
 ClientDAO clientDao = new ClientDAO();
+
+clientDao.GetAllOrder();
+
 Client client1 = new Client(99999, "ClientTest", "555-5555");
 clientDao.InsertClient(client1);
 clientDao.GetAllClient();
