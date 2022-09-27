@@ -1,5 +1,6 @@
 ﻿using System;
 using Oracle.ManagedDataAccess.Client;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 public class LigneCommandeDAO
 {
 	private OracleConnection connection = DBConnection.GetInstance();
@@ -12,7 +13,7 @@ public class LigneCommandeDAO
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "INSERT INTO VENTE.LIGNECOMMANDE VALUES (:NOCOMMANDE, :NOARTICLE, :QUANTITE")";
+		cmd.CommandText = "INSERT INTO VENTE.LIGNECOMMANDE VALUES (:NOCOMMANDE, :NOARTICLE, :QUANTITE)";
 		cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", ligneCommande.NoCommande));
 		cmd.Parameters.Add(new OracleParameter("NOARTICLE", ligneCommande.NoArticle));
 		cmd.Parameters.Add(new OracleParameter("QUANTITE", ligneCommande.Quantite));
