@@ -7,7 +7,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 
 	public class ClientDAO
 	{
-		OracleConnection connection = DBConnection.GetInstance();
+		private OracleConnection connection = DBConnection.GetInstance();
 		
 		
 		public ClientDAO()
