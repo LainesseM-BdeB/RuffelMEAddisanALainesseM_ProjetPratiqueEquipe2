@@ -36,7 +36,7 @@ public class CommandeDAO
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "DELETE FROM VENTE.NOCOMMANDE WHERE NOCOMMANDE = :NOCOMMANDE";
+		cmd.CommandText = "DELETE FROM VENTE.COMMANDE WHERE NOCOMMANDE = :NOCOMMANDE";
 		cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", noCommande));
 		try
 		{

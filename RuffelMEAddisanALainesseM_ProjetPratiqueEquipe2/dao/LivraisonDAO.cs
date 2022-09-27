@@ -35,7 +35,7 @@ public class LivraisonDAO
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "DELETE FROM Livraison WHERE NOLIVRAISON = :NOLIVRAISON";
+		cmd.CommandText = "DELETE FROM VENTE.LIVRAISON WHERE NOLIVRAISON = :NOLIVRAISON";
 		cmd.Parameters.Add(new OracleParameter("NOLIVRAISON", noLivraison));
 		try
 		{
