@@ -21,12 +21,8 @@ public class LigneCommande
 
     public int NoCommande => noCommande;
 
-    public int NoArticle
-    {
-        get => noArticle;
-        set => noArticle = value;
-    }
-
+    public int NoArticle => noArticle;
+    
     public int Quantite
     {
         get => quantite;
