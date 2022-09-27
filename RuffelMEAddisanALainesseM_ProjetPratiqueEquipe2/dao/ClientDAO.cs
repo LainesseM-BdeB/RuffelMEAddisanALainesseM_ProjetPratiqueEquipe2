@@ -21,6 +21,10 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 			{
 				connection.Open();
 				response = query.ExecuteReader();
+				while (response.Read())
+				{
+					Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
+				}
 			}
 			catch (Exception e)
 			{
@@ -31,10 +35,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 				connection.Close();
 			}
 
-			while (response.Read())
-			{
-				Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
-			}
+		
 
 
 		}
@@ -50,6 +51,10 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 			{
 				connection.Open();
 				response = query.ExecuteReader();
+				while (response.Read())
+				{
+					Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
+				}
 			}
 			catch (Exception e)
 			{
@@ -60,10 +65,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 				connection.Close();
 			}
 
-			while (response.Read())
-			{
-				Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
-			}
+		
 
 
 		}
