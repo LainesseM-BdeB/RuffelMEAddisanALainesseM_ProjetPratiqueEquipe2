@@ -5,7 +5,7 @@ public class Client
     private int noClient;
     private string nomClient;
     private string noTelephone;
-    private SortedSet<Commande> commandes;
+    private SortedSet<Commande> commandes = new SortedSet<Commande>();
 
     public Client(string nomClient, string noTelephone)
     {
@@ -34,7 +34,7 @@ public class Client
 
     public int NoClient => noClient;
 
-    public class CompareNoClient : IComparer<Client>
+    public class compareNoClient : IComparer<Client>
     {
         public int Compare(Client clientOne, Client clientTwo)
         {

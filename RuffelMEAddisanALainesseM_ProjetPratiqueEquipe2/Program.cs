@@ -1,10 +1,11 @@
-﻿using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
+﻿using System.Numerics;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
 Client client1 = new Client(1, "Maxime", "555-5555");
 Client client2 = new Client(3, "John", "555-5555");
 Client client3 = new Client(2, "Bob", "555-5555");
 
-SortedSet<Client> clients = new SortedSet<Client>(new Client.CompareNoClient());
+SortedSet<Client> clients = new SortedSet<Client>(new Client.compareNoClient());
 
 clients.Add(client1);
 clients.Add(client2);
@@ -13,4 +14,34 @@ clients.Add(client3);
 foreach (var client in clients)
 {
     Console.Out.WriteLine(client.NoClient);
+}
+
+Article article1 = new Article(1, "TEST", new BigInteger(10.00), 10);
+Commande commande1 = new Commande(1, DateTime.Now, client1.NoClient);
+commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article1.NoArticle, 5));
+
+foreach (var (key, value) in commande1.LigneCommandes)
+{
+    Console.Out.WriteLine("#Commande: " + value.NoCommande);
+    Console.Out.WriteLine("#Article: " + value.NoArticle);
+    Console.Out.WriteLine("Qté: " + value.Quantite);
+}
+
+commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article1.NoArticle, 5));
+
+foreach (var (key, value) in commande1.LigneCommandes)
+{
+    Console.Out.WriteLine("#Commande: " + value.NoCommande);
+    Console.Out.WriteLine("#Article: " + value.NoArticle);
+    Console.Out.WriteLine("Qté: " + value.Quantite);
+}
+
+Article article2 = new Article(2, "TEST", new BigInteger(5.00), 10);
+commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article2.NoArticle, 2));
+
+foreach (var (key, value) in commande1.LigneCommandes)
+{
+    Console.Out.WriteLine("#Commande: " + value.NoCommande);
+    Console.Out.WriteLine("#Article: " + value.NoArticle);
+    Console.Out.WriteLine("Qté: " + value.Quantite);
 }
