@@ -96,8 +96,13 @@ catch (Exception e)
 
 // TEST LivraisonDAO insert and selectALL
 LivraisonDAO livraisonDao = new LivraisonDAO();
+Console.Out.WriteLine("\n\n###################################");
 livraisonDao.GetLivraisonAll();
 livraisonDao.InsertLivraison(new Livraison(99999, DateTime.Now));
+Console.Out.WriteLine("\n\n###################################\nADDED 99999");
+livraisonDao.GetLivraisonAll();
+livraisonDao.DeleteLivraison(99999);
+Console.Out.WriteLine("\n\n###################################\nDELETE 99999");
 livraisonDao.GetLivraisonAll();
 
 // TEST ClientDAO
