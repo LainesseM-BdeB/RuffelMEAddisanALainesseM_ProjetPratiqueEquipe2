@@ -20,7 +20,6 @@ public class LivraisonDAO
 		{
 			connection.Open();
 			cmd.ExecuteNonQuery();
-
 		}
 		catch (Exception e)
 		{
