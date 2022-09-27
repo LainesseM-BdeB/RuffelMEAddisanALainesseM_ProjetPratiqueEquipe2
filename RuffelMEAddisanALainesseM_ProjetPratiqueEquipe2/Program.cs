@@ -3,121 +3,75 @@ using Oracle.ManagedDataAccess.Client;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
+#region Test ClientDAO
 
-/*// TEST Client + Commande + Article
-Client client1 = new Client(1, "Maxime", "555-5555");
-Client client2 = new Client(3, "John", "555-5555");
-Client client3 = new Client(2, "Bob", "555-5555");
-
-SortedSet<Client> clients = new SortedSet<Client>(new Client.compareNoClient());
-
-clients.Add(client1);
-clients.Add(client2);
-clients.Add(client3);
-
-foreach (var client in clients)
-{
-    Console.Out.WriteLine(client.NoClient);
-}
-
-Article article1 = new Article(1, "TEST", new BigInteger(10.00), 10);
-Commande commande1 = new Commande(1, DateTime.Now, client1.NoClient);
-commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article1.NoArticle, 5));
-
-foreach (var (key, value) in commande1.LigneCommandes)
-{
-    Console.Out.WriteLine("#Commande: " + value.NoCommande);
-    Console.Out.WriteLine("#Article: " + value.NoArticle);
-    Console.Out.WriteLine("Qté: " + value.Quantite);
-}
-
-commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article1.NoArticle, 5));
-
-foreach (var (key, value) in commande1.LigneCommandes)
-{
-    Console.Out.WriteLine("#Commande: " + value.NoCommande);
-    Console.Out.WriteLine("#Article: " + value.NoArticle);
-    Console.Out.WriteLine("Qté: " + value.Quantite);
-}
-
-Article article2 = new Article(2, "TEST", new BigInteger(5.00), 10);
-commande1.ajouterLigneCommande(new LigneCommande(commande1.NoCommande, article2.NoArticle, 2));
-
-foreach (var (key, value) in commande1.LigneCommandes)
-{
-    Console.Out.WriteLine("#Commande: " + value.NoCommande);
-    Console.Out.WriteLine("#Article: " + value.NoArticle);
-    Console.Out.WriteLine("Qté: " + value.Quantite);
-}
-
-// TEST Connection à la DB et recherche de données
-OracleConnection connection = DBConnection.GetInstance();
-OracleCommand query = new OracleCommand("SELECT * FROM client");
-query.Connection = connection;
-OracleDataReader response = null;
-try
-{
-    connection.Open();
-    response = query.ExecuteReader();
-    while (response.Read())
-    {
-        Console.Out.WriteLine(response["nomclient"]);
-    }
-}
-catch (Exception e)
-{
-    Console.WriteLine(e.Message);
-}
-finally
-{
-    connection.Close();
-}
-
-#region TEST
-
-Livraison livraison1 = new Livraison(1, DateTime.Now);
-livraison1.ajouterDetailLivraison(new DetailLivraison(1, 1, 3));
-try
-{
-    livraison1.ajouterDetailLivraison(new DetailLivraison(1, 1, 5));
-}
-catch (Exception e)
-{
-    Console.Out.WriteLine(e.Message);
-}
-livraison1.modifierDetailLivraison(new DetailLivraison(1, 1, 5));
-try {
-    livraison1.modifierDetailLivraison(new DetailLivraison(1, 2, 3));
-}
-catch (Exception e)
-{
-    Console.Out.WriteLine(e.Message);
-}
-
-#endregion TEST
-
-
-
-// TEST LivraisonDAO insert and selectALL
-LivraisonDAO livraisonDao = new LivraisonDAO();
-Console.Out.WriteLine("\n\n###################################");
-livraisonDao.GetLivraisonAll();
-livraisonDao.InsertLivraison(new Livraison(99999, DateTime.Now));
-Console.Out.WriteLine("\n\n###################################\nADDED 99999");
-livraisonDao.GetLivraisonAll();
-livraisonDao.DeleteLivraisonById(99999);
-Console.Out.WriteLine("\n\n###################################\nDELETE 99999");
-livraisonDao.GetLivraisonAll();
-
-// TEST ClientDAO
 ClientDAO clientDao = new ClientDAO();
+Client client1 = new Client(99999, "ClientTest", "555-5555");
+clientDao.InsertClient(client1);
 clientDao.GetAllClient();
-clientDao.GetAllOrder();*/
 
-ClientDAO clientDao = new ClientDAO();
+#endregion
+
+#region Test ArticleDAO
+
+ArticleDAO articleDao = new ArticleDAO();
+Article article1 = new Article(99999, "ArticleTest", new BigInteger(9.99), 10);
+articleDao.InsertArticle(article1);
+articleDao.GetAllArticle();
+
+#endregion
+
+#region Test CommandeDAO
+
+CommandeDAO commandeDao = new CommandeDAO();
+Commande commande1 = new Commande(99999, DateTime.Now, 99999);
+commandeDao.InsertCommande(commande1);
+//commandeDao.GetAllCommande();
+
+#endregion
+
+#region Test LigneCommandeDAO
+
+LigneCommandeDAO ligneCommandeDao = new LigneCommandeDAO();
+LigneCommande ligneCommande1 = new LigneCommande(99999, 99999, 10);
+ligneCommandeDao.InsertLigneCommande(ligneCommande1);
+//ligneCommandeDao.GetAllLigneCommande();
+
+#endregion
+
+#region Test LivraisonDAO
+
+LivraisonDAO livraisonDao = new LivraisonDAO();
+Livraison livraison1 = new Livraison(99999, DateTime.Now);
+livraisonDao.InsertLivraison(livraison1);
+livraisonDao.GetLivraisonAll();
+
+
+#endregion
+
+#region Test DetailLivraisonDAO
 
 DetailLivraisonDAO detailLivraisonDao = new DetailLivraisonDAO();
+DetailLivraison detailLivraison1 = new DetailLivraison(99999, 99999, 99999, 10);
+detailLivraisonDao.InsertDetailLivraison(detailLivraison1);
 detailLivraisonDao.GetDetailLivraisonAll();
-detailLivraisonDao.InsertDetailLivraison(new DetailLivraison(999, 1, 70, 1));
+
+#endregion
+
+
+#region Test Delete All Insert
+
+detailLivraisonDao.DeleteDetailLivraisonById(99999, 99999, 99999);
 detailLivraisonDao.GetDetailLivraisonAll();
-detailLivraisonDao.DeleteDetailLivraisonById(999, 1, 70);
+livraisonDao.DeleteLivraisonById(99999);
+livraisonDao.GetLivraisonAll();
+ligneCommandeDao.DeleteLigneCommandeById(99999, 99999);
+//ligneCommandeDao.GetAllLigneCommande();
+commandeDao.DeleteCommandeById(99999);
+//commandeDao.GetAllCommande();
+articleDao.DeleteArticleById(99999);
+articleDao.GetAllArticle();
+clientDao.DeleteClientById(99999);
+clientDao.GetAllClient();
+
+#endregion

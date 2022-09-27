@@ -54,4 +54,34 @@ public class ArticleDAO
 			connection.Close();
 		}
 	}
+	
+	public void GetAllArticle()
+	{
+			
+		OracleCommand cmd = connection.CreateCommand();
+		cmd.CommandText = "SELECT * FROM article";
+		OracleDataReader response = null;
+		try
+		{
+			connection.Open();
+			response = cmd.ExecuteReader();
+			while (response.Read())
+			{
+				Console.Out.WriteLine("#######################");
+				Console.Out.WriteLine(response["noarticle"]);
+				Console.Out.WriteLine(response["description"]);
+				Console.Out.WriteLine(response["prixunitaire"]);
+				Console.Out.WriteLine(response["quantiteenstock"]);
+				Console.Out.WriteLine("#######################\n");
+			}
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+		finally
+		{
+			connection.Close();
+		}
+	}
 }
