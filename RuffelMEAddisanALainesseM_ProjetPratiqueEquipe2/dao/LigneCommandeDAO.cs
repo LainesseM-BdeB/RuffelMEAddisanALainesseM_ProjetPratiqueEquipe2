@@ -1,5 +1,6 @@
 ﻿using System;
-
+using Oracle.ManagedDataAccess.Client;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 public class LigneCommandeDAO
 {
 	private OracleConnection connection = DBConnection.GetInstance();
