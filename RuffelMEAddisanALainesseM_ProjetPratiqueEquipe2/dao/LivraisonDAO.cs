@@ -34,7 +34,7 @@ public class LivraisonDAO
 
 	public void DeleteLivraison(int noLivraison)
 	{
-		Oracle cmd = new OracleCommand();
+		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
 		cmd.CommandText = "DELETE FROM Livraison WHERE NOLIVRAISON = :NOLIVRAISON";
 		cmd.Parameters.Add(new OracleParameter("NOLIVRAISON", noLivraison));
@@ -65,7 +65,10 @@ public class LivraisonDAO
 			OracleDataReader response = cmd.ExecuteReader();
 			while (response.Read())
 			{
+				Console.Out.WriteLine("#######################");
+				Console.Out.WriteLine(response["noLivraison"]);
 				Console.Out.WriteLine(response["datelivraison"]);
+				Console.Out.WriteLine("#######################\n");
 			}
 		}
 		catch (Exception e)

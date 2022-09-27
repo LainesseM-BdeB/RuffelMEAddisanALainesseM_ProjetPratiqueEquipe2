@@ -1,4 +1,6 @@
 ﻿using System;
+using Oracle.ManagedDataAccess.Client;
+using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 
 namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 {
@@ -11,7 +13,7 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		}
 
 
-		public void GetAllClient(String noClient, String nomClient, String noTelephone)
+		public void GetAllClient()
 		{
 			OracleConnection connection = DBConnection.GetInstance();
 			OracleCommand query = new OracleCommand("SELECT * FROM client");
@@ -23,7 +25,11 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 				response = query.ExecuteReader();
 				while (response.Read())
 				{
-					Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
+					Console.Out.WriteLine("#######################");
+					Console.Out.WriteLine(response["noClient"]);
+					Console.Out.WriteLine(response["nomClient"]);
+					Console.Out.WriteLine(response["noTelephone"]);
+					Console.Out.WriteLine("#######################\n");
 				}
 			}
 			catch (Exception e)
@@ -44,8 +50,8 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		{
 			OracleConnection connection = DBConnection.GetInstance();
 			OracleCommand query = connection.CreateCommand();
-			query.CommandText = "SELECT Client.noClient, Client.nomClient, Commande.noCommande FROM Commande" +
-			                    "INNER JOIN Client ON Commande.noClient=Client.noClient"
+			query.CommandText = "SELECT cli.noClient, cli.nomClient, cmd.noCommande FROM commande cmd " +
+			                    "INNER JOIN client cli ON cmd.noClient = cli.noClient";
 			OracleDataReader response = null;
 			try
 			{
@@ -53,7 +59,11 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 				response = query.ExecuteReader();
 				while (response.Read())
 				{
-					Console.Out.WriteLine(response[noClient, nomClient, noTelephone]);
+					Console.Out.WriteLine("#######################");
+					Console.Out.WriteLine(response["noClient"]);
+					Console.Out.WriteLine(response["nomClient"]);
+					Console.Out.WriteLine(response["noCommande"]);
+					Console.Out.WriteLine("#######################\n");
 				}
 			}
 			catch (Exception e)
@@ -64,10 +74,6 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 			{
 				connection.Close();
 			}
-
-		
-
-
 		}
 	}
 }
