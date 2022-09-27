@@ -91,3 +91,10 @@ catch (Exception e)
 {
     Console.Out.WriteLine(e.Message);
 }
+
+
+// TEST LivraisonDAO insert and selectALL
+LivraisonDAO livraisonDao = new LivraisonDAO();
+livraisonDao.GetLivraisonAll();
+livraisonDao.InsertLivraison(new Livraison(99999, DateTime.Now));
+livraisonDao.GetLivraisonAll();
