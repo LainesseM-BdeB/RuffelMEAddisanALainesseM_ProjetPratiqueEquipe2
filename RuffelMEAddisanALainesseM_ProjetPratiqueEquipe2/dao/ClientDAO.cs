@@ -20,12 +20,12 @@ namespace RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.dao
 		{
 			OracleCommand cmd = connection.CreateCommand();
 			cmd.Connection = connection;
-			cmd.CommandText = "SELECT noClient,nomClient,noTelephone FROM Client"
+			cmd.CommandText = "SELECT noClient,nomClient,noTelephone FROM Client";
 			OracleDataReader rd;
 			try
 			{
 				connection.Open();
-				OracleDataReader response = query.ExecuteReader();
+				OracleDataReader response = cmd.ExecuteReader();
 				while (response.Read())
 				{
 					Console.Out.WriteLine("#######################");
