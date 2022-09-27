@@ -5,6 +5,7 @@ public class Client
     private int noClient;
     private string nomClient;
     private string noTelephone;
+    private SortedSet<Commande> commandes;
 
     public Client(string nomClient, string noTelephone)
     {
@@ -32,4 +33,13 @@ public class Client
     }
 
     public int NoClient => noClient;
+
+    public class CompareNoClient : IComparer<Client>
+    {
+        public int Compare(Client clientOne, Client clientTwo)
+        {
+            return clientOne.NoClient.CompareTo(clientTwo.NoClient);
+        }
+    }
+
 }
