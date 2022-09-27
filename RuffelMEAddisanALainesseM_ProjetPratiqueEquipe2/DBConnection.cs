@@ -19,7 +19,10 @@ public sealed class DBConnection
         {
 			lock (cadenas)
             {
-	           new DBConnection();
+	            if (oracleConnection == null)
+	            {
+		            new DBConnection();
+	            }
             }
         }
 
