@@ -31,4 +31,27 @@ public class CommandeDAO
 			connection.Close();
 		}
 	}
+	
+	public void DeleteCommandeById(int noCommande)
+	{
+		OracleCommand cmd = new OracleCommand();
+		cmd.Connection = connection;
+		cmd.CommandText = "DELETE FROM VENTE.NOCOMMANDE WHERE NOCOMMANDE = :NOCOMMANDE";
+		cmd.Parameters.Add(new OracleParameter("NOCOMMANDE", noCommande));
+		try
+		{
+			connection.Open();
+			cmd.ExecuteNonQuery();
+
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+		finally
+		{
+			connection.Close();
+		}
+	}
+	
 }
