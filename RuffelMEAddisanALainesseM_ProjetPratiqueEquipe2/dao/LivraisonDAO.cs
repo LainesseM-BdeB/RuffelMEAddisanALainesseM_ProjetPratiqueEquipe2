@@ -3,7 +3,7 @@ using Oracle.ManagedDataAccess.Client;
 using RuffelMEAddisanALainesseM_ProjetPratiqueEquipe2.model;
 public class LivraisonDAO
 {
-	OracleConnection connection = DBConnection.GetInstance();
+	private OracleConnection connection = DBConnection.GetInstance();
 	public LivraisonDAO()
 	{
 	}
