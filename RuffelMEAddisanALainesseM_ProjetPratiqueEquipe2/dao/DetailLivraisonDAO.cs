@@ -39,7 +39,7 @@ public class DetailLivraisonDAO
 	{
 		OracleCommand cmd = new OracleCommand();
 		cmd.Connection = connection;
-		cmd.CommandText = "DELETE FROM livraison WHERE nolivraison = :nolivraison AND nocommande = :nocommande AND noarticle = :noarticle";
+		cmd.CommandText = "DELETE FROM detaillivraison WHERE nolivraison = :nolivraison AND nocommande = :nocommande AND noarticle = :noarticle";
 		cmd.Parameters.Add(new OracleParameter("nolivraison", noLivraison));
 		cmd.Parameters.Add(new OracleParameter("nocommande", noCommande));
 		cmd.Parameters.Add(new OracleParameter("noarticle", noArticle));
